@@ -3,12 +3,10 @@ package com.kinto.qa.selenium4;
 import com.kinto.qa.config.BaseTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,10 +20,16 @@ public class MultipleWindowsTest extends BaseTest {
 
         driver.switchTo().newWindow(WindowType.TAB); // Lessons learned. Opens new blank tab
 
-        Set<String> windowHandles = driver.getWindowHandles();
-        Iterator<String> iterator = windowHandles.iterator();
-        String parentWindowId = iterator.next();
-        String childWindowId = iterator.next();
+        // New - with Array list
+        ArrayList<String> windows = new ArrayList<>(driver.getWindowHandles());
+        String parentWindowId = windows.get(0);
+        String childWindowId = windows.get(1);
+
+          // OLD
+//        Set<String> windowHandles = driver.getWindowHandles();
+//        Iterator<String> iterator = windowHandles.iterator();
+//        String parentWindowId = iterator.next();
+//        String childWindowId = iterator.next();
 
         driver.switchTo().window(childWindowId);
         driver.get("https://www.rahulshettyacademy.com/");
