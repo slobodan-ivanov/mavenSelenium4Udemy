@@ -25,4 +25,19 @@ public class JavaStreamTest {
         }
         System.out.println("nNamesWithA: " +nNamesWithA);
     }
+
+    @Test
+    public void streamFilter() {
+        // count numbers of elements starting with letter a
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Abuhar");
+        names.add("Boban");
+        names.add("Mixa");
+        names.add("Adam");
+        names.add("Vanja");
+
+        long nNamesWithA = names.stream().filter(s -> s.startsWith("A")).count();
+        System.out.println("nNamesWithA: " +nNamesWithA);
+    }
+    
 }
