@@ -3,6 +3,7 @@ package JavaStreams;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class JavaStreamTest {
 
@@ -38,6 +39,12 @@ public class JavaStreamTest {
 
         long nNamesWithA = names.stream().filter(s -> s.startsWith("A")).count();
         System.out.println("nNamesWithA: " +nNamesWithA);
+
+        //2nd way
+        Stream.of("Alphabet", "Don", "Adhkya", "Adam", "Banana"); // Creating collection (stream)
+        Stream.of("Alphabet", "Don", "Adhkya", "Adam", "Banana").filter(
+                s -> s.startsWith("A")).count(); // Nothing happens
+
     }
-    
+
 }
