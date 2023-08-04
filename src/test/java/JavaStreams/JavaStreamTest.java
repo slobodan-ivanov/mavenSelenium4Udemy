@@ -39,12 +39,21 @@ public class JavaStreamTest {
 
         long nNamesWithA = names.stream().filter(s -> s.startsWith("A")).count();
         System.out.println("nNamesWithA: " +nNamesWithA);
+        System.out.println("---------------");
 
         //2nd way
         Stream.of("Alphabet", "Don", "Adhkya", "Adam", "Banana"); // Creating collection (stream)
         Stream.of("Alphabet", "Don", "Adhkya", "Adam", "Banana").filter(
                 s -> s.startsWith("A")).count(); // Nothing happens
 
+        System.out.println("Print names which length is > 4");
+        names.stream().filter(s -> s.length() > 4).forEach(System.out::println);
+        System.out.println("---------------");
+
+        // Limit by 1 element
+        System.out.println("Print names which length is > 4");
+        names.stream().filter(s -> s.length() > 4).limit(1).forEach(System.out::println);
+        System.out.println("---------------");
     }
 
 }
