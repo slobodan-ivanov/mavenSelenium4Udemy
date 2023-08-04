@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -77,6 +80,30 @@ public class JavaStreamTest {
         Stream<String> newStream = Stream.concat(names.stream(), names.stream());
         boolean anyMatch = newStream.anyMatch(s -> s.equals("Adam"));
         assertTrue(anyMatch);
+    }
+    @Test
+    public void streamCollect() {
+        // list, new list, new list
+        List<String> newList = Stream.of("Alphabet", "Don", "Adhkya", "Adam", "Banana").map(s -> s.toUpperCase()).collect(Collectors.toList());
+        System.out.println(newList);
+
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Abuhar");
+        names.add("Boban");
+        names.add("Vanja");
+        names.add("Adam");
+        names.add("Mixa");
+
+        List<String> newList2 = names.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
+        System.out.println(newList2);
+
+        List<Integer> numbers = Arrays.asList(1,5,3,1,2,4,5,8,9,10);
+        // print unique number from this array
+        // sort the array
+//        numbers.stream().distinct().forEach(s -> System.out.println(s));
+
+        List<Integer> sortedNumbers = numbers.stream().distinct().sorted().collect(Collectors.toList());
+        System.out.println(sortedNumbers.get(2));
     }
 
 }
